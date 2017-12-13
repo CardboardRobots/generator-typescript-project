@@ -1,8 +1,8 @@
 {
-  "name": "ts-boilerplate",
+  "name": "<%= packageName %>",
   "version": "0.0.0",
   "description": "",
-  "repository": "https://www.github.com/sjohnsonaz/ts-boilerplate.git",
+  "repository": "<%= repository %>",
   "license": "MIT",
   "author": "Sean Johnson <sjohnson@sjohnsonaz.com>",
   "main": "dist/scripts/main.js",

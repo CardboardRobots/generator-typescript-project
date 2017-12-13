@@ -1,0 +1,23 @@
+# Dependency directory
+node_modules/
+
+# Documentation directory
+docs/
+
+# Sourcemap, log, packed files
+*.map
+*.log
+*.tgz
+
+# Ignore files
+.gitignore
+.npmignore
+
+# Build configuration files
+
+# Editor configuration files
+.vscode/
+
+# MkDocs files
+mkdocs.yml
+site

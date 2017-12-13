@@ -1,0 +1,32 @@
+{
+  "name": "generator-typescript-project",
+  "version": "0.0.0",
+  "description": "A yeoman generator for TypeScript projects",
+  "license": "MIT",
+  "author": "Sean Johnson <sjohnson@sjohnsonaz.com>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "generators"
+  ],
+  "dependencies": {
+    "yeoman-generator": "2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjohnsonaz/generator-typescript-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sjohnsonaz/generator-typescript-project/issues"
+  },
+  "homepage": "https://github.com/sjohnsonaz/generator-typescript-project#readme",
+  "keywords": [
+    "yeoman-generator",
+    "TypeScript",
+    "Boilerplate",
+    "Yeoman",
+    "Generator"
+  ]
+}

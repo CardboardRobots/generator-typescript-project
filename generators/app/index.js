@@ -14,7 +14,7 @@ module.exports = class TypeScriptGenerator extends Generator {
 
         return this.prompt([{
             type: 'input',
-            name: 'packageName',
+            name: 'projectName',
             message: 'Your project name',
             default: this.appname
         }, {
@@ -27,8 +27,8 @@ module.exports = class TypeScriptGenerator extends Generator {
             name: 'repository',
             message: 'Your project repository'
         }]).then((prompts) => {
-            this.prompts.packageName = prompts.packageName.replace(/\s/g, '-').toLowerCase();
-            this.prompts.version = prompts.version;
+            this.prompts.projectName = prompts.projectName;
+            this.prompts.packageName = prompts.projectName.replace(/\s/g, '-').toLowerCase();
             this.prompts.repository = prompts.repository || ('https://github.com/[user-name]/' + this.packageName);
             return prompts;
         });
@@ -37,9 +37,9 @@ module.exports = class TypeScriptGenerator extends Generator {
     module() {
         this.log('Creating Module');
 
-        this._copy('docs/index.md', 'docs/index.md');
+        this._template('docs/index.md', 'docs/index.md', this.prompts);
 
-        this._copy('src/html/index.html', 'src/html/index.html');
+        this._template('src/html/index.html', 'src/html/index.html', this.prompts);
 
         this._copy('src/mocha/BrowserRunner.ts', 'src/mocha/BrowserRunner.ts');
         this._copy('src/mocha/DomIntegration.js', 'src/mocha/DomIntegration.js');

@@ -1,6 +1,6 @@
 {
   "name": "<%= packageName %>",
-  "version": "<%= version %>",
+  "version": "0.0.0",
   "description": "",
   "repository": "<%= repository %>",
   "license": "MIT",

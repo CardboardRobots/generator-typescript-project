@@ -10,6 +10,8 @@ module.exports = class TypeScriptGenerator extends Generator {
     }
 
     promting() {
+        this.prompts = {};
+
         return this.prompt([{
             type: 'input',
             name: 'packageName',
@@ -17,12 +19,18 @@ module.exports = class TypeScriptGenerator extends Generator {
             default: this.appname
         }, {
             type: 'input',
+            name: 'version',
+            message: 'Your project version',
+            default: '0.0.0'
+        }, {
+            type: 'input',
             name: 'repository',
             message: 'Your project repository'
-        }]).then((props) => {
-            this.packageName = props.packageName.replace(/\s/g, '-').toLowerCase();
-            this.repository = props.repository || ('https://github.com/[user-name]/' + this.packageName);
-            return props;
+        }]).then((prompts) => {
+            this.prompts.packageName = prompts.packageName.replace(/\s/g, '-').toLowerCase();
+            this.prompts.version = prompts.version;
+            this.prompts.repository = prompts.repository || ('https://github.com/[user-name]/' + this.packageName);
+            return prompts;
         });
     }
 
@@ -48,10 +56,7 @@ module.exports = class TypeScriptGenerator extends Generator {
         this._copy('LICENSE', 'LICENSE');
         this._copy('mkdocs.yml', 'mkdocs.yml');
         this._copy('nodemon.json', 'nodemon.json');
-        this._template('package.json', 'package.json', {
-            packageName: this.packageName,
-            repository: this.repository
-        });
+        this._template('package.json', 'package.json', this.prompts);
         this._copy('README.md', 'README.md');
         this._copy('tsconfig.json', 'tsconfig.json');
         this._copy('webpack.config.js', 'webpack.config.js');

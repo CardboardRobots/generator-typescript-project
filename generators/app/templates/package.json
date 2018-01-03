@@ -1,10 +1,7 @@
 {
   "name": "<%= packageName %>",
   "version": "0.0.0",
-  "description": "",
-  "repository": "<%= repository %>",
-  "license": "MIT",
-  "author": "Sean Johnson <sjohnson@sjohnsonaz.com>",
+  "description": "<%= description %>",
   "main": "dist/scripts/main.js",
   "typings": "dist/scripts/main.d.ts",
   "scripts": {

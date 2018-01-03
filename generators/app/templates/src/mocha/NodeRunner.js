@@ -3,7 +3,9 @@ var path = require('path');
 
 var Mocha = require('mocha');
 
+<%if (browser) { %>
 var DomIntegration = require('./DomIntegration');
+<% } %>
 
 // Instantiate a Mocha instance.
 var mocha = new Mocha();
@@ -20,7 +22,9 @@ fs.readdirSync(testDir).filter(function (file) {
     );
 });
 
+<%if (browser) { %>
 DomIntegration.init();
+<% } %>
 
 // Run the tests.
 mocha.run(function (failures) {

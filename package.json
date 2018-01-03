@@ -11,6 +11,11 @@
   "files": [
     "generators"
   ],
+  "devDependencies": {
+    "@types/node": "8.5.2",
+    "@types/yeoman-generator": "2.0.1",
+    "typescript": "2.6.2"
+  },
   "dependencies": {
     "yeoman-generator": "2.0.1"
   },

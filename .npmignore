@@ -21,6 +21,3 @@ docs/
 # MkDocs files
 mkdocs.yml
 site
-
-generators/app/index.js
-generators/app/index.js.map

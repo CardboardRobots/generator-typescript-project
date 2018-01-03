@@ -1,8 +1,8 @@
-import Generator from 'yeoman-generator';
+import * as Generator from 'yeoman-generator';
 
 import * as fs from 'fs';
 
-export default class TypeScriptGenerator extends Generator {
+class TypeScriptGenerator extends Generator {
     prompts: any;
 
     constructor(args, opts) {
@@ -94,3 +94,5 @@ export default class TypeScriptGenerator extends Generator {
             data);
     }
 };
+
+module.exports = TypeScriptGenerator;

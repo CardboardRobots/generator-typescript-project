@@ -11,10 +11,10 @@ class TypeScriptGenerator extends Generator {
         this.option('node', {});
     }
 
-    promting() {
+    async promting() {
         this.prompts = {};
 
-        return this.prompt([{
+        let prompts = await this.prompt([{
             type: 'input',
             name: 'projectName',
             message: 'Your project name',
@@ -27,20 +27,19 @@ class TypeScriptGenerator extends Generator {
             type: 'confirm',
             name: 'browser',
             message: 'Run in a browser?'
-        }]).then((prompts) => {
-            this.prompts.projectName = prompts.projectName;
-            this.prompts.packageName = prompts.projectName.replace(/\s/g, '-').toLowerCase();
-            this.prompts.repository = prompts.repository || ('https://github.com/[user-name]/' + this.prompts.packageName);
-            this.prompts.description = prompts.description;
-            this.prompts.browser = prompts.browser;
-            this.log('browser:', this.prompts.browser);
-            return prompts;
-        });
+        }])
+        this.prompts.projectName = prompts.projectName;
+        this.prompts.packageName = prompts.projectName.replace(/\s/g, '-').toLowerCase();
+        this.prompts.repository = prompts.repository || ('https://github.com/[user-name]/' + this.prompts.packageName);
+        this.prompts.description = prompts.description;
+        this.prompts.browser = prompts.browser;
+        this.log('browser:', this.prompts.browser);
+        return prompts;
     }
 
     async module() {
         this.log('Installing');
-        await this.npmInstall([
+        this.npmInstall([
             "@types/chai@4.0.10",
             "@types/mocha@2.2.44",
             "chai@4.1.2",
@@ -52,6 +51,7 @@ class TypeScriptGenerator extends Generator {
             "typescript@2.6.2",
             "webpack@3.10.0"
         ], {});
+
         this.log('Creating Module');
 
         this._template('docs/index.md', 'docs/index.md', this.prompts);
